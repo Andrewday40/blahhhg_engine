@@ -16,8 +16,17 @@ function getPost(req, res, next){
   next();
 }
 function getAllThePost(req, res, next){
-  console.log('getting all the posts');
-  next();
+  Post.find({}, function(err, foundPosts){
+    if(err){
+      res.status(500).json({
+        msg: err
+      });
+    } else {
+      res.status(200).json({
+        posts: foundPosts
+      });
+    }
+  });
 }
 function createPost(req, res, next){
   var post = new Post({
