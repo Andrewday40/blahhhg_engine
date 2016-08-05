@@ -58,8 +58,17 @@ function createPost(req, res, next){
   });
 }
 function deletePost(req, res, next){
-  console.log('deleteing a post');
-  next();
+  Post.remove({_id: req.params.id}, function(err, removePost){
+    if(err){
+      res.status(500).json({
+        msg: err
+      });
+    } else {
+      res.status(200).json({
+        removePost: removePost
+      });
+    }
+  });
 }
 function updatePost(req, res, next){
   Post.findOneAndUpdate({_id: req.params.id}, req.body, function(err, oldPost){
