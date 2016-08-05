@@ -3,11 +3,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var commentSchema = new Schema({
-  author: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'User'
-  },
+  author: String,
+  // author: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   required: true,
+  //   ref: 'User'
+  // },
   body: {
     type: String,
     required: true
@@ -20,12 +21,13 @@ var commentSchema = new Schema({
     type: Date,
     required: true
   },
-  post: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'Post'
-  }
+  post: String
+  // post: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   required: true,
+  //   ref: 'Post'
+  // }
 });
 
 var Comment = mongoose.model('Comment', commentSchema);
-module.export = Comment;
+module.exports = Comment;
