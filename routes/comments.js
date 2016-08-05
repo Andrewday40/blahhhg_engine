@@ -37,8 +37,17 @@ function createComments(req, res, next){
   });
 }
 function deleteComment(req, res, next){
-  console.log('deleting a commenting');
-  next();
+  Comment.remove({_id: req.params.id}, function(err, removeComment){
+    if(err){
+      res.status(500).json({
+        msg: err
+      });
+    } else {
+      res.status(200).json({
+        removeComment: removeComment
+      });
+    }
+  });
 }
 function updateComment(req, res, next){
   console.log('updating a comment');
