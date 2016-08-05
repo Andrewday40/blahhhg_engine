@@ -21,12 +21,11 @@ var commentSchema = new Schema({
     type: Date,
     required: true
   },
-  post: String
-  // post: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   required: true,
-  //   ref: 'Post'
-  // }
+  post: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Post'
+  }
 });
 
 commentSchema.pre('findOneAndUpdate', function(){
