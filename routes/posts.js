@@ -45,7 +45,7 @@ function createPost(req, res, next){
     created: new Date(),
     updated: new Date()
   });
-  post.save(function(err, newPost){
+  Post.save(function(err, newPost){
     if(err){
       res.status(500).json({
         msg: err
@@ -58,7 +58,7 @@ function createPost(req, res, next){
   });
 }
 function deletePost(req, res, next){
-  Post.remove({_id: req.params.id}, function(err, removePost){
+  Post.findOneAndRemove({_id: req.params.id}, function(err, removePost){
     if(err){
       res.status(500).json({
         msg: err

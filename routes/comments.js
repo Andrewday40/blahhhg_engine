@@ -46,33 +46,33 @@ function createComments(req, res, next){
       });
     } else {
       res.status(200).json({
-        newComment: newComment
+        comment: newComment
       });
     }
   });
 }
 function deleteComment(req, res, next){
-  Comment.remove({_id: req.params.commentId}, function(err, removeComment){
+  Comment.findOneAndRemove({_id: req.params.commentId}, function(err, deletedComment){
     if(err){
       res.status(500).json({
         msg: err
       });
     } else {
       res.status(200).json({
-        removeComment: removeComment
+        removedComment: deletedComment
       });
     }
   });
 }
 function updateComment(req, res, next){
-  Comment.findOneAndUpdate({_id: req.params.commentId}, req.body, function(err, oldComment){
+  Comment.findOneAndUpdate({_id: req.params.commentId}, req.body, function(err, post){
     if(err){
       res.status(500).json({
         msg:err
       });
     } else {
       res.status(200).json({
-        oldComment: oldComment
+        post: post
       });
     }
   });
