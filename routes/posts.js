@@ -12,8 +12,17 @@ router.put('/posts/:id', updatePost);
 module.exports = router;
 
 function getPost(req, res, next){
-  console.log('getting a post');
-  next();
+  Post.find({_id: req.params.id}, function(err, foundAPost){
+    if(err){
+      res.status(500).json({
+        msg: err
+      });
+    } else {
+      res.status(200).json({
+        post: foundAPost
+      });
+    }
+  });
 }
 function getAllThePost(req, res, next){
   Post.find({}, function(err, foundPosts){
