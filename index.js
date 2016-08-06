@@ -7,7 +7,7 @@ var commentRouter = require('./routes/comments.js');
 var postRouter = require('./routes/posts.js');
 var mongoose = require('mongoose');
 
-var port = process.env.PORT | 8080;
+var port = process.env.PORT || 8080;
 var mongoURI = process.env.MONGOURI || require('./config.js').mongoURI;
 
 mongoose.connect(mongoURI);

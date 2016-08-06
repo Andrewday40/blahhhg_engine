@@ -11,3 +11,9 @@ router.delete('/user/:userId', deleteUser);
 router.put('/user/:userId', updateUser);
 
 module.export = router;
+
+function getAllUser(){}
+function getUser(){}
+function createUser(){}
+function deleteUser(){}
+function updateuser(){}
