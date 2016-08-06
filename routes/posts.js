@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var Post = require('../models/post.js');
 
+
 router.get('/posts/:id', getPost);
 router.get('/posts', getAllThePost);
 router.post('/posts', createPost);
@@ -45,13 +46,13 @@ function createPost(req, res, next){
     created: new Date(),
     updated: new Date()
   });
-  Post.save(function(err, newPost){
+  post.save(function(err, newPost){
     if(err){
       res.status(500).json({
         msg: err
       });
     } else {
-      res.status(201).json({
+      res.status(200).json({
         post: newPost
       });
     }

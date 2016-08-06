@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var commentRouter = require('./routes/comments.js');
 var postRouter = require('./routes/posts.js');
+var userRouter = require('./routes/users.js');
 var mongoose = require('mongoose');
 
 var port = process.env.PORT || 8080;
@@ -14,6 +15,7 @@ mongoose.connect(mongoURI);
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({extended: true}));
 server.use(cors());
+server.use(userRouter);
 server.use(commentRouter);
 server.use(postRouter);
 

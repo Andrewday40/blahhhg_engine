@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var Comment = require('../models/comment.js');
 
+
 router.get('/comments/:postId', getCommentsForPost);
 router.post('/comments', createComments);
 router.delete('/comments/:commentId', deleteComment);
