@@ -26,8 +26,17 @@ function getAllUser(req, res, next){
   });
 }
 function getUser(req, res, next){
-  console.log('getting a user');
-  next();
+  User.find({_id: req.params.id}, function(err, foundAUser){
+    if(err){
+      res.status(500).json({
+        msg: err
+      });
+    } else {
+      res.status(200).json({
+        user: foundAUser
+      });
+    }
+  });
 }
 function createUser(req, res, next){
   var user = new User({
