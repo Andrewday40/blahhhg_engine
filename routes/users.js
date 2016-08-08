@@ -13,8 +13,17 @@ router.put('/users/:userId', updateUser);
 module.exports = router;
 
 function getAllUser(req, res, next){
-  console.log('seeing all users');
-  next();
+  User.find({}, function(err, foundUser){
+    if(err){
+      res.status(500).json({
+        msg: err
+      });
+    } else {
+      res.status(200).json({
+        user: foundUser
+      });
+    }
+  });
 }
 function getUser(req, res, next){
   console.log('getting a user');
