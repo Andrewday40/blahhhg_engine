@@ -62,6 +62,15 @@ function deleteUser(req, res, next){
   next();
 }
 function updateUser(req, res, next){
-  console.log('Updating a User');
-  next();
+  User.findOneAndUpdate({_id: req.params.id}, req.body, function(err, oldUser){
+    if(err){
+      res.status(500).json({
+        msg: err
+      });
+    } else {
+      res.status(200).json({
+        oldUser: oldUser
+      });
+    }
+  });
 }
