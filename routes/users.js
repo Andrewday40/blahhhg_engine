@@ -58,8 +58,17 @@ function createUser(req, res, next){
   });
 }
 function deleteUser(req, res, next){
-  console.log('deleting a user');
-  next();
+  User.findOneAndRemove({_id: req.params.id}, function(err, removedUser){
+    if(err){
+      res.status(500).json({
+        msg: err
+      });
+    } else {
+      res.status(200).json({
+        removedUser: removedPost
+      });
+    }
+  });
 }
 function updateUser(req, res, next){
   User.findOneAndUpdate({_id: req.params.id}, req.body, function(err, oldUser){

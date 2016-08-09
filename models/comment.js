@@ -3,12 +3,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var commentSchema = new Schema({
-  author: String,
-  // author: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   required: true,
-  //   ref: 'User'
-  // },
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
+  },
   body: {
     type: String,
     required: true
