@@ -2,11 +2,15 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user.js');
+var auth = require('../authentication.js');
+var passport = require('passport');
 
 
 router.get('/users', getAllUser);
 router.get('/users/:userId', getUser);
-router.post('/users', createUser);
+// router.post('/users', createUser);
+router.post('/signup', auth.signup);
+router.post('/login', auth.login);
 router.delete('/users/:userId', deleteUser);
 router.put('/users/:userId', updateUser);
 
